@@ -1,0 +1,27 @@
+name: rt-voice-clone
+channels:
+  - conda-forge
+  - pytorch
+dependencies:
+  - pip
+  - python=3.7
+  - pytorch
+  - torchvision
+  - tensorflow-gpu>=1.10.0,<=1.14.0
+  - umap-learn
+  - visdom
+  - librosa>=0.5.1
+  - pysoundfile
+  - matplotlib>=2.0.2
+  - numpy>=1.14.0
+  - scipy>=1.0.0
+  - tqdm
+  - Unidecode
+  - inflect
+  - pyqt # changed from PyQt5
+  - multiprocess
+  - numba
+  - pip:
+    - jsonpatch # needed by visdom
+    - sounddevice
+    - webrtcvad    
