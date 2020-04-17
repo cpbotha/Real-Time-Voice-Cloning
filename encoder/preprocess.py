@@ -94,10 +94,17 @@ def _preprocess_speaker_dirs(speaker_dirs, dataset_name, datasets_root, out_dir,
                 continue
                 
             # Load and preprocess the waveform
-            wav = audio.preprocess_wav(in_fpath)
+            try:
+                wav = audio.preprocess_wav(in_fpath)
+            except ValueError as e:
+                # loading VoxCeleb2, this gets raised:
+                # ValueError("frames must be specified for non-seekable files")
+                print(f"skipping loading of {in_fpath}, because: {str(e)}")
+                continue
             if len(wav) == 0:
                 continue
             
+            print(f"Processing {in_fpath}...")
             # Create the mel spectrogram, discard those that are too short
             frames = audio.wav_to_mel_spectrogram(wav)
             if len(frames) < partials_n_frames:
