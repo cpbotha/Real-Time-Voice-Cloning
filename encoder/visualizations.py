@@ -106,11 +106,18 @@ class Visualizations:
         self.last_update_timestamp = now
         self.losses.append(loss)
         self.eers.append(eer)
+        # each dot represents one update step. By default, you'll see 10 dots,
+        # then log output.
         print(".", end="")
-        
+
         # Update the plots every <update_every> steps
         if step % self.update_every != 0:
             return
+
+        # cpbotha: I like to know exactly when my training broke through the night
+        print("\n")
+        print(datetime.utcnow().isoformat())
+
         time_string = "Step time:  mean: %5dms  std: %5dms" % \
                       (int(np.mean(self.step_times)), int(np.std(self.step_times)))
         print("\nStep %6d   Loss: %.4f   EER: %.4f   %s" %
