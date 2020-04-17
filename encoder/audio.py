@@ -7,6 +7,7 @@ import webrtcvad
 import librosa
 import struct
 
+
 int16_max = (2 ** 15) - 1
 
 
@@ -43,7 +44,7 @@ def preprocess_wav(fpath_or_wav: Union[str, Path, np.ndarray],
 def wav_to_mel_spectrogram(wav):
     """
     Derives a mel spectrogram ready to be used by the encoder from a preprocessed audio waveform.
-    Note: this not a log-mel spectrogram.
+    Note: this not a log-mel spectrogram. <-- cpb: why not? Harry Volek's implementation does log mel.
     """
     frames = librosa.feature.melspectrogram(
         wav,
@@ -52,6 +53,8 @@ def wav_to_mel_spectrogram(wav):
         hop_length=int(sampling_rate * mel_window_step / 1000),
         n_mels=mel_n_channels
     )
+    # cpb: let's try log mel
+    frames = np.log10(frames + 1e-6)
     return frames.astype(np.float32).T
 
 
