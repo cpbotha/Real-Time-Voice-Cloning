@@ -3,6 +3,8 @@ from utils.argutils import print_args
 from pathlib import Path
 import argparse
 
+import warnings
+warnings.filterwarnings('ignore')
 
 if __name__ == "__main__":
     class MyFormatter(argparse.ArgumentDefaultsHelpFormatter, argparse.RawDescriptionHelpFormatter):
