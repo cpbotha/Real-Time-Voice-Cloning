@@ -1,0 +1,26 @@
+<meta charset="utf-8">
+
+These are the development notes of cpbotha's fork of the Real-Time-Voice-Cloning repo.
+
+This is a MarkDeep file, following [the Morgan McGuire Markdeep project Management Method](https://cpbotha.net/2020/03/24/the-morgan-mcguire-markdeep-project-management-method-mmmmm/).
+
+## Tasks
+
+- [ ] integrate NVIDIA apex for faster fp16 training
+
+- [x] add `environment.yml`
+- [x] switch to log mel spectrograms
+- [x] remove the relu from the encoder output
+
+## Bugs
+
+- [x] Skip non-seekable audio files, else the preprocessor crashes
+
+## Research
+
+- [ ] Try alternative learning rate schemes
+
+- [x] try with batch size 128 (up from default 64)
+    - continued training with this batch at around step 52700 thanks to a power outage.
+
+<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js" charset="utf-8"></script><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js" charset="utf-8"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
